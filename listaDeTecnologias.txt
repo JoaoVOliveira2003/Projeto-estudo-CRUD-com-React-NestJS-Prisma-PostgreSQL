@@ -1,0 +1,32 @@
+Backend -> npm run start:dev
+frontend -> npm run dev
+
+------------------
+*Backend
+
+-NestJS
+-TypeScript
+
+*Banco de dados
+
+-PostgreSQL
+-Prisma ORM
+
+*Frontend
+
+-React 
+-TypeScript
+
+-------------------------------------
+Basicamente esse projeto pretende ser um crud basico de Pessoa + cachorros.
+
+*Tabela
+
+pessoa
+id int primary key autoIncrement 
+nome varchar 
+
+cachorro
+id int primary key autoIncrement 
+id_pessoa int 
+nome varchar 
