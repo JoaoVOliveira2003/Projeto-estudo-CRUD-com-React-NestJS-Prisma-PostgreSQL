@@ -1,6 +1,7 @@
 Backend -> npm run start:dev
 frontend -> npm run dev
 
+RodarMigrations -> npx prisma migrate dev --name init
 ------------------
 *Backend
 
