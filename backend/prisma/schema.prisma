@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -11,3 +6,23 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Pessoa {
+  id        Int        @id @default(autoincrement())
+  nome      String
+  cachorros Cachorro[]
+}
+
+model Cachorro {
+  id       Int    @id @default(autoincrement())
+  nome     String
+  pessoaId Int
+  pessoa   Pessoa @relation(fields: [pessoaId], references: [id])
+}
+
+model Endereco {
+  id        Int        @id @default(autoincrement())
+  nomeRua      String
+}
+
+
