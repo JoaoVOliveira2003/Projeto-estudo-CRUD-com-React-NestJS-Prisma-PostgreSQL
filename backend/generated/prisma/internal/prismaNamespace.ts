@@ -16,10 +16,10 @@
  */
 
 import * as runtime from "@prisma/client/runtime/client"
-import type * as Prisma from "../models.js"
-import { type PrismaClient } from "./class.js"
+import type * as Prisma from "../models"
+import { type PrismaClient } from "./class"
 
-export type * from '../models.js'
+export type * from '../models'
 
 export type DMMF = typeof runtime.DMMF
 
@@ -385,7 +385,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Pessoa: 'Pessoa',
-  Cachorro: 'Cachorro'
+  Cachorro: 'Cachorro',
+  Endereco: 'Endereco'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "pessoa" | "cachorro"
+    modelProps: "pessoa" | "cachorro" | "endereco"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -553,6 +554,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Endereco: {
+      payload: Prisma.$EnderecoPayload<ExtArgs>
+      fields: Prisma.EnderecoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EnderecoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EnderecoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>
+        }
+        findFirst: {
+          args: Prisma.EnderecoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EnderecoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>
+        }
+        findMany: {
+          args: Prisma.EnderecoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>[]
+        }
+        create: {
+          args: Prisma.EnderecoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>
+        }
+        createMany: {
+          args: Prisma.EnderecoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EnderecoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>[]
+        }
+        delete: {
+          args: Prisma.EnderecoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>
+        }
+        update: {
+          args: Prisma.EnderecoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>
+        }
+        deleteMany: {
+          args: Prisma.EnderecoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EnderecoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EnderecoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>[]
+        }
+        upsert: {
+          args: Prisma.EnderecoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EnderecoPayload>
+        }
+        aggregate: {
+          args: Prisma.EnderecoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEndereco>
+        }
+        groupBy: {
+          args: Prisma.EnderecoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EnderecoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EnderecoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EnderecoCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -607,6 +682,14 @@ export const CachorroScalarFieldEnum = {
 } as const
 
 export type CachorroScalarFieldEnum = (typeof CachorroScalarFieldEnum)[keyof typeof CachorroScalarFieldEnum]
+
+
+export const EnderecoScalarFieldEnum = {
+  id: 'id',
+  nomeRua: 'nomeRua'
+} as const
+
+export type EnderecoScalarFieldEnum = (typeof EnderecoScalarFieldEnum)[keyof typeof EnderecoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -784,6 +867,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   pessoa?: Prisma.PessoaOmit
   cachorro?: Prisma.CachorroOmit
+  endereco?: Prisma.EnderecoOmit
 }
 
 /* Types for Logging */

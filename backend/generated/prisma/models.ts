@@ -8,6 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Pessoa.js'
-export type * from './models/Cachorro.js'
-export type * from './commonInputTypes.js'
+export type * from './models/Pessoa'
+export type * from './models/Cachorro'
+export type * from './models/Endereco'
+export type * from './commonInputTypes'
