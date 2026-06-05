@@ -1,63 +1,58 @@
-import { useState } from "react";
-
-import {
-  Container,
-  Typography,
-} from "@mui/material";
-
+import { useState, useEffect } from "react";
+import { Container, Typography } from "@mui/material";
 import FormularioPessoa from "../components/formularioPessoa";
 import TabelaPessoas from "../components/TabelaPessoas";
-
 import type { Pessoa } from "../types/Pessoa";
+
+const API = "http://localhost:3000/pessoas";
 
 export default function PaginaPessoa() {
   const [nome, setNome] = useState<string>("");
+  const [pessoas, setPessoas] = useState<Pessoa[]>([]);
 
-  const [pessoas, setPessoas] = useState<Pessoa[]>([
-    {
-      id: 1,
-      nome: "João",
-    },
-  ]);
+  // Buscar todas ao carregar a página
+  useEffect(() => {
+    fetch(API)
+      .then((res) => res.json())
+      .then((data) => setPessoas(data));
+  }, []);
 
-  function adicionarPessoa() {
+  async function adicionarPessoa() {
     if (!nome.trim()) return;
 
-    const novaPessoa: Pessoa = {
-      id: Date.now(),
-      nome,
-    };
+    const res = await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome }),
+    });
 
+    const novaPessoa = await res.json();
     setPessoas([...pessoas, novaPessoa]);
-
     setNome("");
   }
 
-  function excluirPessoa(id: number) {
-    setPessoas(
-      pessoas.filter(
-        (pessoa) => pessoa.id !== id
-      )
-    );
+  async function excluirPessoa(id: number) {
+    await fetch(`${API}/${id}`, { method: "DELETE" });
+    setPessoas(pessoas.filter((p) => p.id !== id));
   }
 
-  function editarPessoa(id: number) {
-    const novoNome = prompt(
-      "Digite o novo nome"
-    );
-
+  async function editarPessoa(id: number) {
+    const novoNome = prompt("Digite o novo nome");
     if (!novoNome) return;
 
-    setPessoas(pessoas.map((pessoa) =>pessoa.id === id ? {...pessoa,nome: novoNome,}: pessoa)
-    );
+    const res = await fetch(`${API}/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome: novoNome }),
+    });
+
+    const pessoaAtualizada = await res.json();
+    setPessoas(pessoas.map((p) => p.id === id ? pessoaAtualizada : p));
   }
 
   return (
     <Container maxWidth="md" sx={{ mt: 5 }}>
-      <Typography
-        variant="h4"
-        gutterBottom
-      >
+      <Typography variant="h4" gutterBottom>
         Cadastro de Pessoas
       </Typography>
 
