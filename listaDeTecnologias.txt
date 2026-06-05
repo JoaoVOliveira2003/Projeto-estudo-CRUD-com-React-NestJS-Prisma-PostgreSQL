@@ -14,7 +14,7 @@ RodarMigrations -> npx prisma migrate dev --name init
 -Prisma ORM
 
 *Frontend
-
+-Material UI (MUI)
 -React 
 -TypeScript
 
