@@ -1,5 +1,6 @@
 #!/bin/sh
 
-npx prisma migrate reset --force
-npx ts-node prisma/seed.ts
+npm run build
+npx prisma migrate reset -f
+npx prisma db seed
 npm run start:prod
