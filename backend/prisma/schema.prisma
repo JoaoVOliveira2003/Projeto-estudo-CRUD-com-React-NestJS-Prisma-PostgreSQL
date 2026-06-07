@@ -21,7 +21,7 @@ model Cachorro {
 }
 
 model Endereco {
-  id        Int        @id @default(autoincrement())
+  id           Int        @id @default(autoincrement())
   nomeRua      String
 }
 

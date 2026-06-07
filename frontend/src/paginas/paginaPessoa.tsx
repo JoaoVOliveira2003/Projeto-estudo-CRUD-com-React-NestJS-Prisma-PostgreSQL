@@ -33,6 +33,16 @@ export default function PaginaPessoa() {
 
   async function excluirPessoa(id: number) {
     await fetch(`${API}/${id}`, { method: "DELETE" });
+
+    //Ou pode ser
+    // const res = await fetch(`${API}/${id}`, {
+    //   method: "DELETE",
+    // });
+    // if (!res.ok) {
+    //   alert("Erro ao excluir");
+    //   return;
+    // }
+
     setPessoas(pessoas.filter((p) => p.id !== id));
   }
 
@@ -47,7 +57,7 @@ export default function PaginaPessoa() {
     });
 
     const pessoaAtualizada = await res.json();
-    setPessoas(pessoas.map((p) => p.id === id ? pessoaAtualizada : p));
+    setPessoas(pessoas.map((p) => (p.id === id ? pessoaAtualizada : p)));
   }
 
   return (
