@@ -1,20 +1,17 @@
-import {
-  Paper,
-  Stack,
-  TextField,
-  Button,
-} from "@mui/material";
+import { Paper, Stack, TextField, Button } from "@mui/material";
 
 type FormularioPessoaProps = {
   nome: string;
   setNome: React.Dispatch<React.SetStateAction<string>>;
-  adicionarPessoa: () => void;
+  onSubmit: (nome: string) => void;
+  textoBotao: string;
 };
 
 export default function FormularioPessoa({
   nome,
   setNome,
-  adicionarPessoa,
+  onSubmit,
+  textoBotao,
 }: FormularioPessoaProps) {
   return (
     <Paper
@@ -24,24 +21,16 @@ export default function FormularioPessoa({
         marginBottom: 4,
       }}
     >
-      <Stack
-        direction="row"
-        spacing={2}
-      >
+      <Stack direction="row" spacing={2}>
         <TextField
           fullWidth
           label="Nome"
           value={nome}
-          onChange={(evento) =>
-            setNome(evento.target.value)
-          }
+          onChange={(evento) => setNome(evento.target.value)}
         />
 
-        <Button
-          variant="contained"
-          onClick={adicionarPessoa}
-        >
-          Adicionar
+        <Button variant="contained" onClick={() => onSubmit(nome)}>
+          {textoBotao}
         </Button>
       </Stack>
     </Paper>

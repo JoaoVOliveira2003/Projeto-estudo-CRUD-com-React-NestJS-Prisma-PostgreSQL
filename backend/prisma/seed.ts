@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { fakerPT_BR as faker } from '@faker-js/faker';
 import {prisma} from '../src/lib/prisma'
 
 async function main() {
@@ -17,7 +17,7 @@ async function main() {
                create:Array.from(
                   {length:faker.number.int({min:0,max:5})},
                   ()=>({
-                    nome:faker.animal.dog(), 
+                    nome:faker.person.firstName(), 
                   })
                )
             }

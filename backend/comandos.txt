@@ -1,0 +1,12 @@
+# 1. Reiniciar (apaga tudo e recria o banco)
+npx prisma migrate reset --force
+
+# 2. Rodar as migrations (criar as tabelas)
+npx prisma migrate dev
+
+# 3. Rodar o seeder
+npx ts-node prisma/seed.ts
+
+
+# abrir um local para ver as coisas
+npx prisma studio

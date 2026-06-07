@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Typography } from "@mui/material";
 import FormularioPessoa from "../components/formularioPessoa";
 import TabelaPessoas from "../components/TabelaPessoas";
+import { BarraLateral } from "../components/barraLateral";
 import type { Pessoa } from "../types/Pessoa";
 
 const API = "http://localhost:3000/pessoas";
@@ -61,22 +62,27 @@ export default function PaginaPessoa() {
   }
 
   return (
-    <Container maxWidth="md" sx={{ mt: 5 }}>
-      <Typography variant="h4" gutterBottom>
-        Cadastro de Pessoas
-      </Typography>
+    <>
+      <BarraLateral />
 
-      <FormularioPessoa
-        nome={nome}
-        setNome={setNome}
-        adicionarPessoa={adicionarPessoa}
-      />
+      <Container maxWidth="md" sx={{ mt: 5 }}>
+        <Typography variant="h4" gutterBottom>
+          Cadastro de Pessoas
+        </Typography>
 
-      <TabelaPessoas
-        pessoas={pessoas}
-        editarPessoa={editarPessoa}
-        excluirPessoa={excluirPessoa}
-      />
-    </Container>
+        <FormularioPessoa
+          nome={nome}
+          setNome={setNome}
+          onSubmit={adicionarPessoa}
+          textoBotao="Adicionar"
+        />
+
+        <TabelaPessoas
+          pessoas={pessoas}
+          editarPessoa={editarPessoa}
+          excluirPessoa={excluirPessoa}
+        />
+      </Container>
+    </>
   );
 }
