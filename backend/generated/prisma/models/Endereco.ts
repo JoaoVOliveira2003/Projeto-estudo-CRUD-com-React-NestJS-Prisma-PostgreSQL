@@ -28,50 +28,60 @@ export type AggregateEndereco = {
 
 export type EnderecoAvgAggregateOutputType = {
   id: number | null
+  pessoaId: number | null
 }
 
 export type EnderecoSumAggregateOutputType = {
   id: number | null
+  pessoaId: number | null
 }
 
 export type EnderecoMinAggregateOutputType = {
   id: number | null
   nomeRua: string | null
+  pessoaId: number | null
 }
 
 export type EnderecoMaxAggregateOutputType = {
   id: number | null
   nomeRua: string | null
+  pessoaId: number | null
 }
 
 export type EnderecoCountAggregateOutputType = {
   id: number
   nomeRua: number
+  pessoaId: number
   _all: number
 }
 
 
 export type EnderecoAvgAggregateInputType = {
   id?: true
+  pessoaId?: true
 }
 
 export type EnderecoSumAggregateInputType = {
   id?: true
+  pessoaId?: true
 }
 
 export type EnderecoMinAggregateInputType = {
   id?: true
   nomeRua?: true
+  pessoaId?: true
 }
 
 export type EnderecoMaxAggregateInputType = {
   id?: true
   nomeRua?: true
+  pessoaId?: true
 }
 
 export type EnderecoCountAggregateInputType = {
   id?: true
   nomeRua?: true
+  pessoaId?: true
   _all?: true
 }
 
@@ -164,6 +174,7 @@ export type EnderecoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type EnderecoGroupByOutputType = {
   id: number
   nomeRua: string
+  pessoaId: number
   _count: EnderecoCountAggregateOutputType | null
   _avg: EnderecoAvgAggregateOutputType | null
   _sum: EnderecoSumAggregateOutputType | null
@@ -192,24 +203,31 @@ export type EnderecoWhereInput = {
   NOT?: Prisma.EnderecoWhereInput | Prisma.EnderecoWhereInput[]
   id?: Prisma.IntFilter<"Endereco"> | number
   nomeRua?: Prisma.StringFilter<"Endereco"> | string
+  pessoaId?: Prisma.IntFilter<"Endereco"> | number
+  pessoa?: Prisma.XOR<Prisma.PessoaScalarRelationFilter, Prisma.PessoaWhereInput>
 }
 
 export type EnderecoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nomeRua?: Prisma.SortOrder
+  pessoaId?: Prisma.SortOrder
+  pessoa?: Prisma.PessoaOrderByWithRelationInput
 }
 
 export type EnderecoWhereUniqueInput = Prisma.AtLeast<{
   id?: number
+  pessoaId?: number
   AND?: Prisma.EnderecoWhereInput | Prisma.EnderecoWhereInput[]
   OR?: Prisma.EnderecoWhereInput[]
   NOT?: Prisma.EnderecoWhereInput | Prisma.EnderecoWhereInput[]
   nomeRua?: Prisma.StringFilter<"Endereco"> | string
-}, "id">
+  pessoa?: Prisma.XOR<Prisma.PessoaScalarRelationFilter, Prisma.PessoaWhereInput>
+}, "id" | "pessoaId">
 
 export type EnderecoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nomeRua?: Prisma.SortOrder
+  pessoaId?: Prisma.SortOrder
   _count?: Prisma.EnderecoCountOrderByAggregateInput
   _avg?: Prisma.EnderecoAvgOrderByAggregateInput
   _max?: Prisma.EnderecoMaxOrderByAggregateInput
@@ -223,29 +241,35 @@ export type EnderecoScalarWhereWithAggregatesInput = {
   NOT?: Prisma.EnderecoScalarWhereWithAggregatesInput | Prisma.EnderecoScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Endereco"> | number
   nomeRua?: Prisma.StringWithAggregatesFilter<"Endereco"> | string
+  pessoaId?: Prisma.IntWithAggregatesFilter<"Endereco"> | number
 }
 
 export type EnderecoCreateInput = {
   nomeRua: string
+  pessoa: Prisma.PessoaCreateNestedOneWithoutEnderecoInput
 }
 
 export type EnderecoUncheckedCreateInput = {
   id?: number
   nomeRua: string
+  pessoaId: number
 }
 
 export type EnderecoUpdateInput = {
   nomeRua?: Prisma.StringFieldUpdateOperationsInput | string
+  pessoa?: Prisma.PessoaUpdateOneRequiredWithoutEnderecoNestedInput
 }
 
 export type EnderecoUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nomeRua?: Prisma.StringFieldUpdateOperationsInput | string
+  pessoaId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type EnderecoCreateManyInput = {
   id?: number
   nomeRua: string
+  pessoaId: number
 }
 
 export type EnderecoUpdateManyMutationInput = {
@@ -255,29 +279,106 @@ export type EnderecoUpdateManyMutationInput = {
 export type EnderecoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nomeRua?: Prisma.StringFieldUpdateOperationsInput | string
+  pessoaId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type EnderecoNullableScalarRelationFilter = {
+  is?: Prisma.EnderecoWhereInput | null
+  isNot?: Prisma.EnderecoWhereInput | null
 }
 
 export type EnderecoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nomeRua?: Prisma.SortOrder
+  pessoaId?: Prisma.SortOrder
 }
 
 export type EnderecoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  pessoaId?: Prisma.SortOrder
 }
 
 export type EnderecoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nomeRua?: Prisma.SortOrder
+  pessoaId?: Prisma.SortOrder
 }
 
 export type EnderecoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nomeRua?: Prisma.SortOrder
+  pessoaId?: Prisma.SortOrder
 }
 
 export type EnderecoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  pessoaId?: Prisma.SortOrder
+}
+
+export type EnderecoCreateNestedOneWithoutPessoaInput = {
+  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutPessoaInput, Prisma.EnderecoUncheckedCreateWithoutPessoaInput>
+  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutPessoaInput
+  connect?: Prisma.EnderecoWhereUniqueInput
+}
+
+export type EnderecoUncheckedCreateNestedOneWithoutPessoaInput = {
+  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutPessoaInput, Prisma.EnderecoUncheckedCreateWithoutPessoaInput>
+  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutPessoaInput
+  connect?: Prisma.EnderecoWhereUniqueInput
+}
+
+export type EnderecoUpdateOneWithoutPessoaNestedInput = {
+  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutPessoaInput, Prisma.EnderecoUncheckedCreateWithoutPessoaInput>
+  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutPessoaInput
+  upsert?: Prisma.EnderecoUpsertWithoutPessoaInput
+  disconnect?: Prisma.EnderecoWhereInput | boolean
+  delete?: Prisma.EnderecoWhereInput | boolean
+  connect?: Prisma.EnderecoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnderecoUpdateToOneWithWhereWithoutPessoaInput, Prisma.EnderecoUpdateWithoutPessoaInput>, Prisma.EnderecoUncheckedUpdateWithoutPessoaInput>
+}
+
+export type EnderecoUncheckedUpdateOneWithoutPessoaNestedInput = {
+  create?: Prisma.XOR<Prisma.EnderecoCreateWithoutPessoaInput, Prisma.EnderecoUncheckedCreateWithoutPessoaInput>
+  connectOrCreate?: Prisma.EnderecoCreateOrConnectWithoutPessoaInput
+  upsert?: Prisma.EnderecoUpsertWithoutPessoaInput
+  disconnect?: Prisma.EnderecoWhereInput | boolean
+  delete?: Prisma.EnderecoWhereInput | boolean
+  connect?: Prisma.EnderecoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EnderecoUpdateToOneWithWhereWithoutPessoaInput, Prisma.EnderecoUpdateWithoutPessoaInput>, Prisma.EnderecoUncheckedUpdateWithoutPessoaInput>
+}
+
+export type EnderecoCreateWithoutPessoaInput = {
+  nomeRua: string
+}
+
+export type EnderecoUncheckedCreateWithoutPessoaInput = {
+  id?: number
+  nomeRua: string
+}
+
+export type EnderecoCreateOrConnectWithoutPessoaInput = {
+  where: Prisma.EnderecoWhereUniqueInput
+  create: Prisma.XOR<Prisma.EnderecoCreateWithoutPessoaInput, Prisma.EnderecoUncheckedCreateWithoutPessoaInput>
+}
+
+export type EnderecoUpsertWithoutPessoaInput = {
+  update: Prisma.XOR<Prisma.EnderecoUpdateWithoutPessoaInput, Prisma.EnderecoUncheckedUpdateWithoutPessoaInput>
+  create: Prisma.XOR<Prisma.EnderecoCreateWithoutPessoaInput, Prisma.EnderecoUncheckedCreateWithoutPessoaInput>
+  where?: Prisma.EnderecoWhereInput
+}
+
+export type EnderecoUpdateToOneWithWhereWithoutPessoaInput = {
+  where?: Prisma.EnderecoWhereInput
+  data: Prisma.XOR<Prisma.EnderecoUpdateWithoutPessoaInput, Prisma.EnderecoUncheckedUpdateWithoutPessoaInput>
+}
+
+export type EnderecoUpdateWithoutPessoaInput = {
+  nomeRua?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type EnderecoUncheckedUpdateWithoutPessoaInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nomeRua?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -285,31 +386,50 @@ export type EnderecoSumOrderByAggregateInput = {
 export type EnderecoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nomeRua?: boolean
+  pessoaId?: boolean
+  pessoa?: boolean | Prisma.PessoaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["endereco"]>
 
 export type EnderecoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nomeRua?: boolean
+  pessoaId?: boolean
+  pessoa?: boolean | Prisma.PessoaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["endereco"]>
 
 export type EnderecoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nomeRua?: boolean
+  pessoaId?: boolean
+  pessoa?: boolean | Prisma.PessoaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["endereco"]>
 
 export type EnderecoSelectScalar = {
   id?: boolean
   nomeRua?: boolean
+  pessoaId?: boolean
 }
 
-export type EnderecoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nomeRua", ExtArgs["result"]["endereco"]>
+export type EnderecoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nomeRua" | "pessoaId", ExtArgs["result"]["endereco"]>
+export type EnderecoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  pessoa?: boolean | Prisma.PessoaDefaultArgs<ExtArgs>
+}
+export type EnderecoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  pessoa?: boolean | Prisma.PessoaDefaultArgs<ExtArgs>
+}
+export type EnderecoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  pessoa?: boolean | Prisma.PessoaDefaultArgs<ExtArgs>
+}
 
 export type $EnderecoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Endereco"
-  objects: {}
+  objects: {
+    pessoa: Prisma.$PessoaPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     nomeRua: string
+    pessoaId: number
   }, ExtArgs["result"]["endereco"]>
   composites: {}
 }
@@ -704,6 +824,7 @@ readonly fields: EnderecoFieldRefs;
  */
 export interface Prisma__EnderecoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  pessoa<T extends Prisma.PessoaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PessoaDefaultArgs<ExtArgs>>): Prisma.Prisma__PessoaClient<runtime.Types.Result.GetResult<Prisma.$PessoaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -735,6 +856,7 @@ export interface Prisma__EnderecoClient<T, Null = never, ExtArgs extends runtime
 export interface EnderecoFieldRefs {
   readonly id: Prisma.FieldRef<"Endereco", 'Int'>
   readonly nomeRua: Prisma.FieldRef<"Endereco", 'String'>
+  readonly pessoaId: Prisma.FieldRef<"Endereco", 'Int'>
 }
     
 
@@ -751,6 +873,10 @@ export type EnderecoFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the Endereco
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
   /**
    * Filter, which Endereco to fetch.
    */
@@ -770,6 +896,10 @@ export type EnderecoFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
+  /**
    * Filter, which Endereco to fetch.
    */
   where: Prisma.EnderecoWhereUniqueInput
@@ -787,6 +917,10 @@ export type EnderecoFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Endereco
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
   /**
    * Filter, which Endereco to fetch.
    */
@@ -836,6 +970,10 @@ export type EnderecoFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
+  /**
    * Filter, which Endereco to fetch.
    */
   where?: Prisma.EnderecoWhereInput
@@ -883,6 +1021,10 @@ export type EnderecoFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Endereco
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
   /**
    * Filter, which Enderecos to fetch.
    */
@@ -932,6 +1074,10 @@ export type EnderecoCreateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
+  /**
    * The data needed to create a Endereco.
    */
   data: Prisma.XOR<Prisma.EnderecoCreateInput, Prisma.EnderecoUncheckedCreateInput>
@@ -965,6 +1111,10 @@ export type EnderecoCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extens
    */
   data: Prisma.EnderecoCreateManyInput | Prisma.EnderecoCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -979,6 +1129,10 @@ export type EnderecoUpdateArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Endereco
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
   /**
    * The data needed to update a Endereco.
    */
@@ -1031,6 +1185,10 @@ export type EnderecoUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extens
    * Limit how many Enderecos to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1045,6 +1203,10 @@ export type EnderecoUpsertArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Endereco
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
   /**
    * The filter to search for the Endereco to update in case it exists.
    */
@@ -1071,6 +1233,10 @@ export type EnderecoDeleteArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Endereco
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
   /**
    * Filter which Endereco to delete.
    */
@@ -1103,4 +1269,8 @@ export type EnderecoDefaultArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Endereco
    */
   omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
 }

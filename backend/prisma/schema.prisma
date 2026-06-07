@@ -7,10 +7,15 @@ datasource db {
   provider = "postgresql"
 }
 
+// [] → sigfica uma relação 1:n
+// ? → sigfica uma relação 1:1
+
 model Pessoa {
   id        Int        @id @default(autoincrement())
   nome      String
+  idade     Int?
   cachorros Cachorro[]
+  endereco Endereco?
 }
 
 model Cachorro {
@@ -23,6 +28,8 @@ model Cachorro {
 model Endereco {
   id           Int        @id @default(autoincrement())
   nomeRua      String
+  pessoaId Int    @unique
+  pessoa   Pessoa @relation(fields: [pessoaId], references: [id])
 }
 
 

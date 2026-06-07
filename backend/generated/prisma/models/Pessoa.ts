@@ -28,50 +28,60 @@ export type AggregatePessoa = {
 
 export type PessoaAvgAggregateOutputType = {
   id: number | null
+  idade: number | null
 }
 
 export type PessoaSumAggregateOutputType = {
   id: number | null
+  idade: number | null
 }
 
 export type PessoaMinAggregateOutputType = {
   id: number | null
   nome: string | null
+  idade: number | null
 }
 
 export type PessoaMaxAggregateOutputType = {
   id: number | null
   nome: string | null
+  idade: number | null
 }
 
 export type PessoaCountAggregateOutputType = {
   id: number
   nome: number
+  idade: number
   _all: number
 }
 
 
 export type PessoaAvgAggregateInputType = {
   id?: true
+  idade?: true
 }
 
 export type PessoaSumAggregateInputType = {
   id?: true
+  idade?: true
 }
 
 export type PessoaMinAggregateInputType = {
   id?: true
   nome?: true
+  idade?: true
 }
 
 export type PessoaMaxAggregateInputType = {
   id?: true
   nome?: true
+  idade?: true
 }
 
 export type PessoaCountAggregateInputType = {
   id?: true
   nome?: true
+  idade?: true
   _all?: true
 }
 
@@ -164,6 +174,7 @@ export type PessoaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type PessoaGroupByOutputType = {
   id: number
   nome: string
+  idade: number | null
   _count: PessoaCountAggregateOutputType | null
   _avg: PessoaAvgAggregateOutputType | null
   _sum: PessoaSumAggregateOutputType | null
@@ -192,13 +203,17 @@ export type PessoaWhereInput = {
   NOT?: Prisma.PessoaWhereInput | Prisma.PessoaWhereInput[]
   id?: Prisma.IntFilter<"Pessoa"> | number
   nome?: Prisma.StringFilter<"Pessoa"> | string
+  idade?: Prisma.IntNullableFilter<"Pessoa"> | number | null
   cachorros?: Prisma.CachorroListRelationFilter
+  endereco?: Prisma.XOR<Prisma.EnderecoNullableScalarRelationFilter, Prisma.EnderecoWhereInput> | null
 }
 
 export type PessoaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  idade?: Prisma.SortOrderInput | Prisma.SortOrder
   cachorros?: Prisma.CachorroOrderByRelationAggregateInput
+  endereco?: Prisma.EnderecoOrderByWithRelationInput
 }
 
 export type PessoaWhereUniqueInput = Prisma.AtLeast<{
@@ -207,12 +222,15 @@ export type PessoaWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PessoaWhereInput[]
   NOT?: Prisma.PessoaWhereInput | Prisma.PessoaWhereInput[]
   nome?: Prisma.StringFilter<"Pessoa"> | string
+  idade?: Prisma.IntNullableFilter<"Pessoa"> | number | null
   cachorros?: Prisma.CachorroListRelationFilter
+  endereco?: Prisma.XOR<Prisma.EnderecoNullableScalarRelationFilter, Prisma.EnderecoWhereInput> | null
 }, "id">
 
 export type PessoaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  idade?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PessoaCountOrderByAggregateInput
   _avg?: Prisma.PessoaAvgOrderByAggregateInput
   _max?: Prisma.PessoaMaxOrderByAggregateInput
@@ -226,65 +244,82 @@ export type PessoaScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PessoaScalarWhereWithAggregatesInput | Prisma.PessoaScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Pessoa"> | number
   nome?: Prisma.StringWithAggregatesFilter<"Pessoa"> | string
+  idade?: Prisma.IntNullableWithAggregatesFilter<"Pessoa"> | number | null
 }
 
 export type PessoaCreateInput = {
   nome: string
+  idade?: number | null
   cachorros?: Prisma.CachorroCreateNestedManyWithoutPessoaInput
+  endereco?: Prisma.EnderecoCreateNestedOneWithoutPessoaInput
 }
 
 export type PessoaUncheckedCreateInput = {
   id?: number
   nome: string
+  idade?: number | null
   cachorros?: Prisma.CachorroUncheckedCreateNestedManyWithoutPessoaInput
+  endereco?: Prisma.EnderecoUncheckedCreateNestedOneWithoutPessoaInput
 }
 
 export type PessoaUpdateInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cachorros?: Prisma.CachorroUpdateManyWithoutPessoaNestedInput
+  endereco?: Prisma.EnderecoUpdateOneWithoutPessoaNestedInput
 }
 
 export type PessoaUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cachorros?: Prisma.CachorroUncheckedUpdateManyWithoutPessoaNestedInput
+  endereco?: Prisma.EnderecoUncheckedUpdateOneWithoutPessoaNestedInput
 }
 
 export type PessoaCreateManyInput = {
   id?: number
   nome: string
+  idade?: number | null
 }
 
 export type PessoaUpdateManyMutationInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type PessoaUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type PessoaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  idade?: Prisma.SortOrder
 }
 
 export type PessoaAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  idade?: Prisma.SortOrder
 }
 
 export type PessoaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  idade?: Prisma.SortOrder
 }
 
 export type PessoaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
+  idade?: Prisma.SortOrder
 }
 
 export type PessoaSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  idade?: Prisma.SortOrder
 }
 
 export type PessoaScalarRelationFilter = {
@@ -294,6 +329,14 @@ export type PessoaScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -318,13 +361,31 @@ export type PessoaUpdateOneRequiredWithoutCachorrosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PessoaUpdateToOneWithWhereWithoutCachorrosInput, Prisma.PessoaUpdateWithoutCachorrosInput>, Prisma.PessoaUncheckedUpdateWithoutCachorrosInput>
 }
 
+export type PessoaCreateNestedOneWithoutEnderecoInput = {
+  create?: Prisma.XOR<Prisma.PessoaCreateWithoutEnderecoInput, Prisma.PessoaUncheckedCreateWithoutEnderecoInput>
+  connectOrCreate?: Prisma.PessoaCreateOrConnectWithoutEnderecoInput
+  connect?: Prisma.PessoaWhereUniqueInput
+}
+
+export type PessoaUpdateOneRequiredWithoutEnderecoNestedInput = {
+  create?: Prisma.XOR<Prisma.PessoaCreateWithoutEnderecoInput, Prisma.PessoaUncheckedCreateWithoutEnderecoInput>
+  connectOrCreate?: Prisma.PessoaCreateOrConnectWithoutEnderecoInput
+  upsert?: Prisma.PessoaUpsertWithoutEnderecoInput
+  connect?: Prisma.PessoaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PessoaUpdateToOneWithWhereWithoutEnderecoInput, Prisma.PessoaUpdateWithoutEnderecoInput>, Prisma.PessoaUncheckedUpdateWithoutEnderecoInput>
+}
+
 export type PessoaCreateWithoutCachorrosInput = {
   nome: string
+  idade?: number | null
+  endereco?: Prisma.EnderecoCreateNestedOneWithoutPessoaInput
 }
 
 export type PessoaUncheckedCreateWithoutCachorrosInput = {
   id?: number
   nome: string
+  idade?: number | null
+  endereco?: Prisma.EnderecoUncheckedCreateNestedOneWithoutPessoaInput
 }
 
 export type PessoaCreateOrConnectWithoutCachorrosInput = {
@@ -345,11 +406,57 @@ export type PessoaUpdateToOneWithWhereWithoutCachorrosInput = {
 
 export type PessoaUpdateWithoutCachorrosInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  endereco?: Prisma.EnderecoUpdateOneWithoutPessoaNestedInput
 }
 
 export type PessoaUncheckedUpdateWithoutCachorrosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  endereco?: Prisma.EnderecoUncheckedUpdateOneWithoutPessoaNestedInput
+}
+
+export type PessoaCreateWithoutEnderecoInput = {
+  nome: string
+  idade?: number | null
+  cachorros?: Prisma.CachorroCreateNestedManyWithoutPessoaInput
+}
+
+export type PessoaUncheckedCreateWithoutEnderecoInput = {
+  id?: number
+  nome: string
+  idade?: number | null
+  cachorros?: Prisma.CachorroUncheckedCreateNestedManyWithoutPessoaInput
+}
+
+export type PessoaCreateOrConnectWithoutEnderecoInput = {
+  where: Prisma.PessoaWhereUniqueInput
+  create: Prisma.XOR<Prisma.PessoaCreateWithoutEnderecoInput, Prisma.PessoaUncheckedCreateWithoutEnderecoInput>
+}
+
+export type PessoaUpsertWithoutEnderecoInput = {
+  update: Prisma.XOR<Prisma.PessoaUpdateWithoutEnderecoInput, Prisma.PessoaUncheckedUpdateWithoutEnderecoInput>
+  create: Prisma.XOR<Prisma.PessoaCreateWithoutEnderecoInput, Prisma.PessoaUncheckedCreateWithoutEnderecoInput>
+  where?: Prisma.PessoaWhereInput
+}
+
+export type PessoaUpdateToOneWithWhereWithoutEnderecoInput = {
+  where?: Prisma.PessoaWhereInput
+  data: Prisma.XOR<Prisma.PessoaUpdateWithoutEnderecoInput, Prisma.PessoaUncheckedUpdateWithoutEnderecoInput>
+}
+
+export type PessoaUpdateWithoutEnderecoInput = {
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cachorros?: Prisma.CachorroUpdateManyWithoutPessoaNestedInput
+}
+
+export type PessoaUncheckedUpdateWithoutEnderecoInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nome?: Prisma.StringFieldUpdateOperationsInput | string
+  idade?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cachorros?: Prisma.CachorroUncheckedUpdateManyWithoutPessoaNestedInput
 }
 
 
@@ -386,28 +493,34 @@ export type PessoaCountOutputTypeCountCachorrosArgs<ExtArgs extends runtime.Type
 export type PessoaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
+  idade?: boolean
   cachorros?: boolean | Prisma.Pessoa$cachorrosArgs<ExtArgs>
+  endereco?: boolean | Prisma.Pessoa$enderecoArgs<ExtArgs>
   _count?: boolean | Prisma.PessoaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pessoa"]>
 
 export type PessoaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
+  idade?: boolean
 }, ExtArgs["result"]["pessoa"]>
 
 export type PessoaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nome?: boolean
+  idade?: boolean
 }, ExtArgs["result"]["pessoa"]>
 
 export type PessoaSelectScalar = {
   id?: boolean
   nome?: boolean
+  idade?: boolean
 }
 
-export type PessoaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome", ExtArgs["result"]["pessoa"]>
+export type PessoaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "idade", ExtArgs["result"]["pessoa"]>
 export type PessoaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cachorros?: boolean | Prisma.Pessoa$cachorrosArgs<ExtArgs>
+  endereco?: boolean | Prisma.Pessoa$enderecoArgs<ExtArgs>
   _count?: boolean | Prisma.PessoaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PessoaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -417,10 +530,12 @@ export type $PessoaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Pessoa"
   objects: {
     cachorros: Prisma.$CachorroPayload<ExtArgs>[]
+    endereco: Prisma.$EnderecoPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     nome: string
+    idade: number | null
   }, ExtArgs["result"]["pessoa"]>
   composites: {}
 }
@@ -816,6 +931,7 @@ readonly fields: PessoaFieldRefs;
 export interface Prisma__PessoaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   cachorros<T extends Prisma.Pessoa$cachorrosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Pessoa$cachorrosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CachorroPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  endereco<T extends Prisma.Pessoa$enderecoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Pessoa$enderecoArgs<ExtArgs>>): Prisma.Prisma__EnderecoClient<runtime.Types.Result.GetResult<Prisma.$EnderecoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -847,6 +963,7 @@ export interface Prisma__PessoaClient<T, Null = never, ExtArgs extends runtime.T
 export interface PessoaFieldRefs {
   readonly id: Prisma.FieldRef<"Pessoa", 'Int'>
   readonly nome: Prisma.FieldRef<"Pessoa", 'String'>
+  readonly idade: Prisma.FieldRef<"Pessoa", 'Int'>
 }
     
 
@@ -1261,6 +1378,25 @@ export type Pessoa$cachorrosArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.CachorroScalarFieldEnum | Prisma.CachorroScalarFieldEnum[]
+}
+
+/**
+ * Pessoa.endereco
+ */
+export type Pessoa$enderecoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Endereco
+   */
+  select?: Prisma.EnderecoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Endereco
+   */
+  omit?: Prisma.EnderecoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EnderecoInclude<ExtArgs> | null
+  where?: Prisma.EnderecoWhereInput
 }
 
 /**
