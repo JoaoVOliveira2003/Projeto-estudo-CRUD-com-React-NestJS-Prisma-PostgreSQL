@@ -3,7 +3,7 @@ import { defineConfig } from 'prisma/config';
 export default defineConfig({
   schema: 'prisma/schema.prisma',
   datasource: {
-    url: 'postgresql://postgres:senha@localhost:5432/postgres',
+    url: process.env.DATABASE_URL!,
   },
   migrations: {
     seed: 'tsx prisma/seed.ts',
